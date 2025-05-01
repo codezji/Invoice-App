@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quick Invoice Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Invoice Generator</h1>
+
+<form id="invoiceForm">
+  <h3>Bank Details</h3>
+  <input type="text" id="bankName" placeholder="Bank Name" required>
+  <input type="text" id="bankIFSC" placeholder="Bank IFSC Code" required>
+
+  <h3>Seller Details</h3>
+  <input type="text" id="sellerName" placeholder="Your Legal Name" required>
+  <textarea id="sellerAddress" placeholder="Your Business Address" required></textarea>
+
+  <h3>Client Details</h3>
+  <input type="text" id="clientCompany" placeholder="Client Company Name" required>
+  <textarea id="clientAddress" placeholder="Client Company Address" required></textarea>
+
+  <h3>Items</h3>
+  <div id="items">
+    <input type="text" class="itemDesc" placeholder="Item Description" required>
+    <input type="number" class="itemAmount" placeholder="Amount" required>
+  </div>
+  <button type="button" onclick="addItem()">+ Add Another Item</button>
+
+  <h3>Other Info</h3>
+  <textarea id="notes" placeholder="Notes (Optional)"></textarea>
+
+  <button type="submit">Generate Invoice</button>
+</form>
+
+<div class="invoice hidden" id="invoice">
+  <h2>Invoice</h2>
+  <p><strong>Invoice Number:</strong> <span id="invoiceNumber"></span></p>
+  <p><strong>Date:</strong> <span id="invoiceDate"></span></p>
+
+  <h3>Seller Info:</h3>
+  <p id="sellerInfo"></p>
+
+  <h3>Client Info:</h3>
+  <p id="clientInfo"></p>
+
+  <h3>Bank Info:</h3>
+  <p id="bankInfo"></p>
+
+  <h3>Items:</h3>
+  <table id="invoiceTable">
+    <tr>
+      <th>Description</th>
+      <th>Amount</th>
+    </tr>
+  </table>
+
+  <h3>Total: ₹<span id="totalAmount"></span></h3>
+
+  <h3>Notes:</h3>
+  <p id="invoiceNotes"></p>
+
+  <button onclick="window.print()">🖸️ Print Invoice</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
